@@ -1,30 +1,29 @@
-# React + TypeScript + Vite
+### SnapPals
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Tech Stack
 
-Currently, two official plugins are available:
+- React.js
+- Appwrite
+- React Query
+- TypeScript
+- Shadcn
+- Tailwind CSS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
 
-## Expanding the ESLint configuration
+To run the application localy you need to create a file called ".env.local" outside "src" folder. You can find it in Snippets
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Snippets
 
-- Configure the top-level `parserOptions` property like this:
+<details>
+<summary><code>constants.index.ts</code></summary>
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```typescript
+VITE_APPWRITE_URL = 'https://cloud.appwrite.io/v1'
+VITE_APPWRITE_PROJECT_ID = '66116552eaefd974a84a'
+VITE_APPWRITE_DATABASE_ID = '6612fdf4daa1dd1c4f7c'
+VITE_APPWRITE_STORAGE_ID = '6612fdb10abc46f655f7'
+VITE_APPWRITE_USER_COLLECTION_ID = '6612fe3f8973886cb288'
+VITE_APPWRITE_POST_COLLECTION_ID = '6612fe1c685733c2d2f2'
+VITE_APPWRITE_SAVES_COLLECTION_ID = '6612fe50d4f9176cccd6'
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
