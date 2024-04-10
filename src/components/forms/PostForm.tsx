@@ -13,13 +13,14 @@ import { Models } from "appwrite"
 import { useUserContext } from "@/context/AuthContext"
 import { useToast } from "../ui/use-toast"
 import { useCreatePost, useUpdatePost } from "@/lib/react-query/queriesAndMutations"
+import Loader from "../shared/Loader"
 
 type PostFormProps = {
     post?: Models.Document;
     action: 'Create' | 'Update';
 }
 
-const PostForm = ({ post, action }: PostFormProps) => {
+const PostForm = ({ post, action }: PostFormProps) => { 
     const { 
         mutateAsync: createPost, 
         isPending: isLoadingCreate 
@@ -153,16 +154,20 @@ const PostForm = ({ post, action }: PostFormProps) => {
                 <div className="flex gap-4 items-center justify-end">
                     <Button 
                         type="button" 
-                        className="shad-button_dark_4 h-12 w-24"
+                        className="shad-button_dark_4"
                     >
                         Cancel
                     </Button>
                     <Button 
                         type="submit" 
-                        className="shad-button_primary whitespace-nowrap h-12 w-24"
+                        className="
+                            shad-button_primary 
+                            whitespace-nowrap 
+                            h-12
+                        "
                         disabled={isLoadingCreate || isLoadingUpdate}
                     >
-                        {isLoadingCreate || isLoadingUpdate ? 'Loading...' : action}
+                        {isLoadingUpdate && <Loader />}{action}
                     </Button>
                 </div>
             </form>

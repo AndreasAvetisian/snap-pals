@@ -1,5 +1,5 @@
 import { useUserContext } from '@/context/AuthContext';
-import { formatDate } from '@/lib/utils';
+import { canBeMovified, formatDate } from '@/lib/utils';
 import { Models } from 'appwrite';
 import { Link } from 'react-router-dom';
 import PostStats from './PostStats';
@@ -13,6 +13,10 @@ const PostCard = ({ post }: PostCardProps) => {
 
     if(!post.creator) return;
 
+    // write code here
+
+    const canBeMovifiedValue = canBeMovified(post.$createdAt, 15)
+    
     return (
         <div className="post-card">
             <div className="flex-between">
@@ -26,8 +30,20 @@ const PostCard = ({ post }: PostCardProps) => {
                     </Link>
 
                     <div className="flex flex-col">
-                        <p className="base-medium lg:body-bold text-light-1">{post.creator.name}</p>
-                        <div className="flex-center gap-2 text-light-3">
+                        <div className="flex gap-2 items-center">
+                            <p className="base-medium lg:body-bold text-light-1">{post.creator.name}</p>
+                            <a
+                                href={`/profile/${post.creator.$id}`}
+                                className="
+                                    subtle-semibold 
+                                    lg:small-regular 
+                                    text-light-3
+                                "
+                            >
+                                @{post.creator.username}
+                            </a>
+                        </div>
+                        <div className="flex-start gap-2 text-light-3">
                             <p className="subtle-semibold lg:small-regular">{formatDate(post.$createdAt)}</p>
                             -
                             <p className="subtle-semibold lg:small-regular">{post.location}</p>
@@ -37,7 +53,7 @@ const PostCard = ({ post }: PostCardProps) => {
 
                 <Link 
                     to={`/update-post/${post.$id}`}
-                    className={`${user.id !== post.creator.$id && "hidden"}`}
+                    className={`${user.id !== post.creator.$id || !canBeMovifiedValue ? "hidden" : ""}`}
                 >
                     <img
                         src="/assets/icons/edit.svg"

@@ -5,6 +5,20 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+export const convertFileToUrl = (file: File) => URL.createObjectURL(file);
+
+export const canBeMovified = (createdAt: string, value: number): boolean => {
+  const postCreatedAt = new Date(createdAt);
+  const currentTime = new Date();
+  const timeDifferenceInMinutes = (currentTime.getTime() - postCreatedAt.getTime()) / (1000 * 60);
+
+  if (timeDifferenceInMinutes > value) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
 export function formatDate(dateString: string): string {
   const date: Date = new Date(dateString);
   const now: Date = new Date();

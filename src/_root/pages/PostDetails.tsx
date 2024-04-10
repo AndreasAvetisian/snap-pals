@@ -68,11 +68,17 @@ const PostDetails = () => {
                   className="w-8 h-8 lg:w-12 lg:h-12 rounded-full"
                 />
                 <div className="flex gap-1 flex-col">
-                  <p className="base-medium lg:body-bold text-light-1">
-                    {post?.creator.name}
-                  </p>
-                  <div className="flex-center gap-2 text-light-3">
-                    <p className="subtle-semibold lg:small-regular ">
+                  <div className="flex gap-2 items-center">
+                    <p className="base-medium lg:body-bold text-light-1">
+                      {post?.creator.name}
+                    </p>
+                    <p className="subtle-semibold lg:small-regular lg:body-bold text-light-3">
+                      @{post?.creator.username}
+                    </p>
+                  </div>
+                  
+                  <div className="flex justify-start items-center gap-2 text-light-3">
+                    <p className="subtle-semibold lg:small-regular">
                       {multiFormatDateString(post?.$createdAt)}
                     </p>
                     •
