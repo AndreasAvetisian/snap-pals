@@ -16,7 +16,7 @@ To run the application localy you need to create a file called ".env.local" outs
 ## Snippets
 
 <details>
-<summary><code>constants.index.ts</code></summary>
+<summary><code>.env.local</code></summary>
 
 ```typescript
 VITE_APPWRITE_URL = 'https://cloud.appwrite.io/v1'
